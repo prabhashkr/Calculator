@@ -1,14 +1,11 @@
 package calculator;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
 
-@Path("/calculator")
+@Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 public class CalculatorResource {
     private final List<MathFormat> logs;
@@ -43,7 +40,10 @@ public class CalculatorResource {
 
     @GET
     @Path("div")
-    public long div(@QueryParam("first") long first,@QueryParam("second") long second){
+    public long div(@QueryParam("first") long first,@QueryParam("second") long second)  {
+        if(second==0){
+            throw new WebApplicationException("Div by 0 not allowed",400);
+        }
         long answer = first/second;
         logs.add(new MathFormat("div",first,second,answer));
         return answer;
@@ -51,7 +51,7 @@ public class CalculatorResource {
 
     @GET
     @Path("audit")
-    public List<MathFormat> audit(){
+    public List<MathFormat> audit() {
         return logs;
     }
 }
