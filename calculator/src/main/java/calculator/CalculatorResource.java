@@ -42,7 +42,7 @@ public class CalculatorResource {
     @Path("div")
     public long div(@QueryParam("first") long first,@QueryParam("second") long second)  {
         if(second==0){
-            throw new WebApplicationException("Div by 0 not allowed",400);
+            throw new ClientErrorException("Div by 0 not allowed",400);
         }
         long answer = first/second;
         logs.add(new MathFormat("div",first,second,answer));
