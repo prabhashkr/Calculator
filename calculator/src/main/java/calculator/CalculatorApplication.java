@@ -1,12 +1,12 @@
 package calculator;
 
+import calculator.exceptionmappers.CalculatorExceptionMapper;
 import io.confluent.rest.Application;
 import org.eclipse.jetty.security.*;
 import org.eclipse.jetty.util.security.Constraint;
 import org.eclipse.jetty.util.security.Password;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import javax.ws.rs.core.Configurable;
 import java.util.HashMap;
 
@@ -33,7 +33,7 @@ public class CalculatorApplication extends Application<CalculatorConfiguration>{
     public void setupResources(Configurable<?> configurable, CalculatorConfiguration calculatorConfiguration) {
         final CalculatorResource resource=new CalculatorResource();
         configurable.register(resource);
-//        configurable.register(CalculatorExceptionMapper.class);
+        configurable.register(CalculatorExceptionMapper.class);
     }
 
     @Override

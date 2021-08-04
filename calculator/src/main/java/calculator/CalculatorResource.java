@@ -54,4 +54,10 @@ public class CalculatorResource {
     public List<MathFormat> audit() {
         return logs;
     }
+
+    @GET
+    @Path("")
+    public String ping() {
+        return "Hi there!! Welcome to Calculator";
+    }
 }

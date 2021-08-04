@@ -40,6 +40,15 @@ public class Tests {
     }
 
     @Test
+    public void testPing(){
+        assertEquals("Hi there!! Welcome to Calculator",
+                client.target(BASE_URI)
+                        .path("")
+                        .request()
+                        .get(String.class));
+    }
+
+    @Test
     public void testDivideByZero(){
          Response response=client.target(BASE_URI)
                  .path("div")

@@ -19,7 +19,6 @@
             <artifactId>rest-utils</artifactId>
             <version>6.0.0-SNAPSHOT</version>
         </dependency>
-
         <dependency>
             <groupId>io.confluent</groupId>
             <artifactId>rest-utils-test</artifactId>
@@ -31,8 +30,16 @@
             <artifactId>jersey-media-json-jackson</artifactId>
             <version>2.31</version>
         </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-scalars</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>retrofit</artifactId>
+            <version>2.9.0</version>
+        </dependency>
     </dependencies>
-
-
 
 </project>

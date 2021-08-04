@@ -1,4 +1,4 @@
-package calculator;
+package calculator.exceptionmappers;
 
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.core.MediaType;
