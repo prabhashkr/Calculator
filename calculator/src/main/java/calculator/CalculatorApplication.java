@@ -5,14 +5,10 @@ import io.confluent.rest.Application;
 import org.eclipse.jetty.security.*;
 import org.eclipse.jetty.util.security.Constraint;
 import org.eclipse.jetty.util.security.Password;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import javax.ws.rs.core.Configurable;
 import java.util.HashMap;
 
 public class CalculatorApplication extends Application<CalculatorConfiguration>{
-
-    private static final Logger log= LoggerFactory.getLogger(CalculatorApplication.class);
 
     public CalculatorApplication(CalculatorConfiguration config) {
         super(config);
@@ -24,8 +20,8 @@ public class CalculatorApplication extends Application<CalculatorConfiguration>{
         CalculatorConfiguration calculatorConfiguration=new CalculatorConfiguration(props);
         CalculatorApplication app =new CalculatorApplication(calculatorConfiguration);
         app.start();
-        log.info("Server started, listening on"+app.server.getURI());
         System.out.println("Server started, listening on "+app.server.getURI());
+        System.out.println("SwaggerUI on "+app.server.getURI()+"openapi/swagger-ui/index.html");
         app.join();
     }
 
@@ -34,6 +30,7 @@ public class CalculatorApplication extends Application<CalculatorConfiguration>{
         final CalculatorResource resource=new CalculatorResource();
         configurable.register(resource);
         configurable.register(CalculatorExceptionMapper.class);
+        configurable.register(new SwaggerFilesResource());
     }
 
     @Override

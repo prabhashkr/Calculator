@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  # Basic Markdown works in the top level description, so using it to give some basic guidelines.
+  # Note this is the only "text" that gets the Markdown treatment.
+  description: |
+    ## Confluent Calculator API - Swagger UI
+    ---
+    This tool (SwaggerUI) and the Open API spec file are provided _for development / test
+    purposes only_:
+    - **Do _not_ enable in Production.**
+    - **This tool only works with HTTP.**
+  version: "1.0"
+  title: CALCULATOR API
+  x-api-id: 9a0c4222-9190-4816-b872-1a9cf002afab
+  x-audience: external-public
+
+schemes:
+  - "http"
+paths:
+  /:
+    get:
+      summary: Verifying API service is responsible.
+      operationId: home
+      tags:
+        - home
+      responses:
+        '200':
+          description: "A Welcome page"
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        default:
+          description: "unexpected error"
+
+  /add:
+    get:
+      summary: Verifying API service is responsible.
+      operationId: add
+      tags:
+        - add
+      parameters:
+        - in: query
+          name: first
+          schema:
+            type: long
+          description: The first number to add
+        - in: query
+          name: second
+          schema:
+            type: long
+          description: The second number to add
+      responses:
+        '200':
+          description: "A Welcome page"
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        default:
+          description: "unexpected error"
+
